@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi San Valentín? 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #fff;
+            text-align: center;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        .heart {
+            font-size: 2.8em;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+
+        h1 { font-size: 1.9em; }
+        p { font-size: 1.1em; line-height: 1.5; }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .yes {
+            background: #ff3b6f;
+            color: white;
+        }
+
+        .no {
+            background: #ffffff;
+            color: #ff3b6f;
+            font-weight: bold;
+            position: relative;
+        }
+
+        /* 🎶 Álbumes */
+        .albums {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .album {
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .album:active {
+            transform: scale(0.95);
+        }
+
+        .album img {
+            width: 100%;
+            display: block;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 1.05em;
+            min-height: 70px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SECCIÓN 1 -->
+<section id="inicio">
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Mochuela, ¿Quieres ser mi San Valentín?</h1>
+        <p>
+            Desde que llegaste a mi vida, todo es más bonito y<br>
+            me harías muy feliz si aceptas 💕
+        </p>
+
+        <div class="buttons">
+            <button class="yes" onclick="goToYes()">¡Sí! 💖</button>
+            <button class="no" onclick="moveNo(this)">No :c</button>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN 2 -->
+<section id="si">
+    <div class="card">
+        <h1>¡Sabía que dirías que sí! 💘</h1>
+        <p>
+            Gracias por hacerme tan feliz.<br>
+            prometo muchos momentos lindos juntos ❤️
+        </p>
+
+        <div class="buttons">
+            <button class="yes" onclick="goToMusic()">Tengo algo más para ti 💌</button>
+        </div>
+
+        <div style="font-size:3em;">🥰🌹💖</div>
+    </div>
+</section>
+
+<!-- SECCIÓN 3 🎶 -->
+<section id="music">
+    <div class="card">
+        <h1>Te dedico estas canciones 🎶</h1>
+        <p>Toca una portada</p>
+
+        <div class="albums">
+            <div class="album" onclick="playSong(1)">
+                <img src="album1.jpg">
+            </div>
+            <div class="album" onclick="playSong(2)">
+                <img src="album2.jpg">
+            </div>
+            <div class="album" onclick="playSong(3)">
+                <img src="album3.jpg">
+            </div>
+            <div class="album" onclick="playSong(4)">
+                <img src="album4.jpg">
+            </div>
+        </div>
+
+        <div id="description" class="description">
+            💕 Cada canción tiene un pedacito de nosotros 💕
+        </div>
+    </div>
+</section>
+
+<!-- 🎵 Audios -->
+<audio id="song1" src="song1.mp3"></audio>
+<audio id="song2" src="song2.mp3"></audio>
+<audio id="song3" src="song3.mp3"></audio>
+<audio id="song4" src="song4.mp3"></audio>
+
+<script>
+    function goToYes() {
+        document.getElementById("si").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function goToMusic() {
+        document.getElementById("music").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function moveNo(button) {
+        const maxX = window.innerWidth / 3;
+        const maxY = window.innerHeight / 4;
+        const x = Math.random() * maxX - maxX / 2;
+        const y = Math.random() * maxY - maxY / 2;
+        button.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function playSong(num) {
+        const descriptions = {
+            1: "La mejor forma de describir como me sentí al principio ❤️",
+            2: "Mi presente a tu lado se siente y escucha asi 🥰",
+            3: "La nostalgia de no estar contigo siempre me llevara a tu casa ✨",
+            4: "Porque sacrificaria todo lo bello de mi vida por 4 segundos a tu lado 💖"
+        };
+
+        for (let i = 1; i <= 4; i++) {
+            const song = document.getElementById("song" + i);
+            song.pause();
+            song.currentTime = 0;
+        }
+
+        document.getElementById("song" + num).play();
+        document.getElementById("description").innerText = descriptions[num];
+    }
+</script>
+
+</body>
+</html>
