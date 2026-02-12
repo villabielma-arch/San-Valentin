@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi San Valentín? 💖</title>
+
+    <!-- Optimización móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-radius: 22px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        .heart {
+            font-size: 2.8em;
+            animation: heartbeat 1.4s infinite;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 1.9em;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .yes {
+            background: #ff3b6f;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .no {
+            background: #ffffff;
+            color: #ff3b6f;
+            font-weight: bold;
+            position: relative;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Pimpolla, ¿Quieres ser mi San Valentín?</h1>
+        <p>
+            Desde que llegaste a mi vida, todo es más bonito y<br>
+            me harías muy feliz si aceptas 💕
+        </p>
+
+        <div class="buttons">
+            <button class="yes" onclick="sayYes()">¡Sí! 💖</button>
+            <button class="no" onclick="moveNo(this)">No :C</button>
+        </div>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.body.innerHTML = `
+                <div style="
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    align-items:center;
+                    min-height:100vh;
+                    padding:20px;
+                    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+                    color:white;
+                    text-align:center;
+                    font-family:'Segoe UI', system-ui, sans-serif;
+                ">
+                    <h1 style="font-size:2.2em;">¡Sabía que dirías que sí! 💘</h1>
+                    <p style="font-size:1.2em; line-height:1.5;">
+                        Gracias por hacerme tan feliz.<br>
+                        Prometo muchos momentos lindos juntos ❤️
+                    </p>
+                    <div style="font-size:3em;">🥰🌹💖</div>
+                </div>
+            `;
+        }
+
+        function moveNo(button) {
+            const maxX = window.innerWidth / 3;
+            const maxY = window.innerHeight / 4;
+            const x = Math.random() * maxX - maxX / 2;
+            const y = Math.random() * maxY - maxY / 2;
+            button.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    </script>
+
+</body>
+</html>
